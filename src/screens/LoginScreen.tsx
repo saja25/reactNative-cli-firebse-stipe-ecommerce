@@ -17,8 +17,8 @@ export default function LoginScreen() {
   };
   const signUp = () => {
     FirebaseUtil.signUp(email, password.toString()).catch((e) => {
-      console.log(e);
-      alert("Somthing went wrong");
+      console.log(e.message);
+      alert(e.message);
     });
   };
 

@@ -1,11 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React, { useContext } from "react";
-import HomeScreen from "_screens/HomeScreen";
 import LoadingScreen from "_screens/LoadingScreen";
 import LoginScreen from "_screens/LoginScreen";
+import ProductScreen from "_screens/ProductScreen/ProductScreen";
 import { LoginContext } from "_utils/LoginProvider";
-
+import MainStack from "../MainStack/Index";
 const Stack = createStackNavigator();
 export default function AppStack() {
   const { user, isLoading } = useContext(LoginContext);
@@ -19,11 +19,32 @@ export default function AppStack() {
             component={LoadingScreen}
           />
         ) : user ? (
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <>
+            <Stack.Screen
+              name="Shoppers"
+              component={MainStack}
+              options={{
+                title: "SHOPPERS",
+                headerTitleAlign: "center",
+              }}
+            />
+            <Stack.Screen
+              name="Product"
+              component={ProductScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+          </>
         ) : (
-          <Stack.Screen name="signin" component={LoginScreen} />
+          <Stack.Screen
+            name="signin"
+            component={LoginScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
         )}
-        {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

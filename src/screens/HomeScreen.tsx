@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
-import FirebaseUtil from "_utils/FirebaseUtil";
-import { LoginContext } from "_utils/LoginProvider";
+import { View } from "react-native";
 import { Product } from "src/interface";
 import { getProducts } from "_utils/FireStoreUtil";
 import LoadingScreen from "./LoadingScreen";

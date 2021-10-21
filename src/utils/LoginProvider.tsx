@@ -1,6 +1,6 @@
-import { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import React, { useEffect, useState } from 'react';
-import auth from '@react-native-firebase/auth';
+import { FirebaseAuthTypes } from "@react-native-firebase/auth";
+import React, { useEffect, useState } from "react";
+import auth from "@react-native-firebase/auth";
 
 interface ContextType {
   user: FirebaseAuthTypes.User | null;
