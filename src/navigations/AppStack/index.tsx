@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import LoadingScreen from "_screens/LoadingScreen";
 import LoginScreen from "_screens/LoginScreen";
 import ProductScreen from "_screens/ProductScreen/ProductScreen";
+import { baseStyles } from "_styles/Index";
 import { LoginContext } from "_utils/LoginProvider";
 import MainStack from "../MainStack/Index";
 const Stack = createStackNavigator();
@@ -26,6 +27,7 @@ export default function AppStack() {
               options={{
                 title: "SHOPPERS",
                 headerTitleAlign: "center",
+                headerTitleStyle: baseStyles.brandTitle,
               }}
             />
             <Stack.Screen

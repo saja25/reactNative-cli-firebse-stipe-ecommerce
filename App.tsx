@@ -1,18 +1,31 @@
 import { StripeProvider } from "@stripe/stripe-react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import AppStack from "_navigations/AppStack";
 import LoginProvider from "_utils/LoginProvider";
+import { FetchPublishableKey } from "_utils/FetchKeyHelper";
+
 import api_key from "./src/assets/files/stripe.json";
+import { API_URL } from "ApiConfig";
+
 export default function App() {
+  // const [publishableKey, setpublishableKey] = useState("");
+  // useEffect(() => {
+  //   async function getPublishableKey() {
+  //     const publishableKey = await FetchPublishableKey();
+  //     if (publishableKey) {
+  //       setpublishableKey(publishableKey);
+  //     }
+  //   }
+  // }, []);
   return (
-    <View style={styles.container}>
-      <StripeProvider publishableKey={api_key.publishKey}>
+    <StripeProvider publishableKey={api_key.publishKey}>
+      <View style={styles.container}>
         <LoginProvider>
           <AppStack />
         </LoginProvider>
-      </StripeProvider>
-    </View>
+      </View>
+    </StripeProvider>
   );
 }
 

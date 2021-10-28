@@ -12,13 +12,13 @@ export default function LoginScreen() {
   const signIn = () => {
     FirebaseUtil.signIn(email, password.toString()).catch((e) => {
       console.log(e);
-      alert("Email/ password is wrong");
+      alert("Email or password is wrong");
     });
   };
   const signUp = () => {
     FirebaseUtil.signUp(email, password.toString()).catch((e) => {
-      console.log(e.message);
-      alert(e.message);
+      console.log("from login screen", e.message);
+      // alert("from login screen", e);
     });
   };
 

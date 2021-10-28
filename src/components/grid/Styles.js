@@ -3,7 +3,6 @@ import { StyleSheet, Dimensions } from "react-native";
 const Styles = StyleSheet.create({
   flatList: {
     padding: 10,
-    // margin: 15,
   },
   continer: {
     flex: 1,
@@ -27,15 +26,11 @@ const Styles = StyleSheet.create({
     height: 185,
     width: 175,
     resizeMode: "cover",
-    // borderRadius: 10,
   },
   textBox: {
     padding: 10,
     width: 155,
-  },
-  title: {},
-  price: {
-    color: "gray",
+    alignItems: "center",
   },
 });
 export default Styles;

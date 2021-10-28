@@ -15,5 +15,15 @@ const Styles = StyleSheet.create({
     height: 150,
     width: "40%",
   },
+  desc: {
+    paddingLeft: 10,
+    justifyContent: "center",
+  },
+  title: {
+    marginBottom: 10,
+  },
+  qty: {
+    marginBottom: 10,
+  },
 });
 export default Styles;

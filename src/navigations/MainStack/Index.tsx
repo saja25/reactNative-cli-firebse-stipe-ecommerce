@@ -1,17 +1,19 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text } from "react-native";
 import FirebaseUtil from "../../utils/FirebaseUtil";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "_screens/HomeScreen";
 import CheckoutScreen from "_screens/CheckoutScreen/Index";
+import Button from "_components/Button/Index";
+import { baseStyles } from "_styles/Index";
 interface MainStackProps {}
 const Tabs = createBottomTabNavigator();
 const ProfileScreen = () => {
   return (
-    <View>
-      <Text>hii this is the profile screen</Text>
-      <Button title="sign out" onPress={FirebaseUtil.signOut} />
+    <View style={baseStyles.containerJustify}>
+      <Text style={baseStyles.headerLg}>hii this is the profile screen</Text>
+      <Button title="SIGN OUT" onPress={FirebaseUtil.signOut} />
     </View>
   );
 };
@@ -38,6 +40,7 @@ export default function Index(props: MainStackProps) {
         activeTintColor: "#FFDB47",
         inactiveTintColor: "black",
         showLabel: false,
+        style: baseStyles.tabBar,
       }}
     >
       <Tabs.Screen component={ProfileScreen} name="Profile" />

@@ -4,6 +4,7 @@ import { View, Text, FlatList, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Product } from "src/interface";
+import { baseStyles } from "_styles/Index";
 import Styles from "./Styles";
 interface GridProps {
   products: Product[];
@@ -24,8 +25,8 @@ const Grid = (props: GridProps) => {
         <TouchableOpacity style={Styles.card} onPress={handelPress}>
           <Image source={{ uri: item.image }} style={Styles.image} />
           <View style={Styles.textBox}>
-            <Text style={Styles.title}>{item.title}</Text>
-            <Text style={Styles.price}>{item.price}</Text>
+            <Text style={baseStyles.headerMd}>{item.title.split(" ")[0]}</Text>
+            <Text style={baseStyles.headerSm}>{item.price}</Text>
           </View>
         </TouchableOpacity>
       </View>

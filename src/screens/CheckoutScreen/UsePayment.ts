@@ -26,8 +26,8 @@ export default function UsePayment(setList: (a: Cart[]) => void) {
       }
       return paymentIntent;
     } catch (e) {
-      console.log(e);
-      Alert.alert("payment failed!! sososos"); // here u got the error
+      console.log("from usepayment", e);
+      Alert.alert("payment failed!! sososos from usepayment"); // here u got the error
     }
   };
   const opernPaymentPage = async () => {
@@ -44,7 +44,7 @@ export default function UsePayment(setList: (a: Cart[]) => void) {
         setList([]);
       }
       setcartDisabled(false);
-    });
+    }, 1000);
   };
   return { opernPaymentPage, cartDisabled };
 }
