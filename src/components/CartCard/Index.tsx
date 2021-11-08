@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Cart } from "src/interface";
 import { baseStyles } from "_styles/Index";
@@ -7,7 +7,6 @@ import Styles from "./Styles";
 interface CartCardProps {
   item: Cart;
 }
-
 const Index = ({ item }: CartCardProps) => {
   return (
     <View>
@@ -20,7 +19,7 @@ const Index = ({ item }: CartCardProps) => {
           <Text style={[Styles.qty, baseStyles.subHeader]}>
             Qty: {item.count}
           </Text>
-          <Text style={baseStyles.headerSm}>{item.price}</Text>
+          <Text style={baseStyles.headerSm}>{item.price} $</Text>
         </View>
       </TouchableOpacity>
     </View>

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
+import Button from "_components/Button/Index";
+import { baseStyles, colors } from "_styles/Index";
 import FirebaseUtil from "_utils/FirebaseUtil";
 
 export default function LoginScreen() {
@@ -18,7 +20,7 @@ export default function LoginScreen() {
   const signUp = () => {
     FirebaseUtil.signUp(email, password.toString()).catch((e) => {
       console.log("from login screen", e.message);
-      // alert("from login screen", e);
+      Alert.alert(e.message);
     });
   };
 
@@ -39,16 +41,22 @@ export default function LoginScreen() {
       />
       {create ? (
         <>
-          <Button title="Sign Up" onPress={() => signUp()} />
-          <Text style={styles.text} onPress={() => setCreate(false)}>
-            Sign In
+          <Button title="SIGN UP" onPress={() => signUp()} />
+          <Text
+            style={[baseStyles.headerSm, { margin: 10 }]}
+            onPress={() => setCreate(false)}
+          >
+            ALREADY HAVE AN ACCOUNT ?
           </Text>
         </>
       ) : (
         <>
-          <Button title="Sign in" onPress={() => signIn()} />
-          <Text style={styles.text} onPress={() => setCreate(true)}>
-            Create an Account
+          <Button title="SIGN IN " onPress={() => signIn()} />
+          <Text
+            style={[baseStyles.headerSm, { margin: 10 }]}
+            onPress={() => setCreate(true)}
+          >
+            CREATE NEW ACCOUNT
           </Text>
         </>
       )}
@@ -64,14 +72,14 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   textInput: {
-    borderWidth: 1,
-    borderColor: "grey",
+    borderWidth: 3,
+    borderColor: colors.yellow,
     padding: 10,
+    paddingHorizontal: 20,
     marginBottom: 20,
-    borderRadius: 5,
-  },
-  text: {
-    color: "blue",
-    marginTop: 20,
+    borderRadius: 35,
+    height: 55,
+    width: "100%",
+    marginHorizontal: 2,
   },
 });

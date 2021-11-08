@@ -1,56 +1,55 @@
 import { FirebaseFirestoreTypes } from "@react-native-firebase/firestore";
-import { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Alert } from "react-native";
-import { Cart, Product } from "src/interface";
+import { Favorite, Product } from "src/interface";
 import { UseMounted } from "_hooks/UseMounted";
-import { getPrice } from "_utils/CommonUtil";
 import {
   firestoreCartUpdate,
+  firestoreFaveUpdate,
   getCombinedCart,
+  getFaveProducts,
   getProducts,
   getUpdatedCart,
+  getUpdatedFaves,
 } from "_utils/FireStoreUtil";
 import { LoginContext } from "_utils/LoginProvider";
 
-export default function UseCart() {
+export default function UseFave() {
   let subscriber: () => void;
   const { user } = useContext(LoginContext);
-  const [List, setList] = useState<Cart[]>([]);
-  const [Price, setPrice] = useState<number>();
-  const [CartLoading, setCartLoading] = useState(true);
+  const [List, setList] = useState<Favorite[]>([]);
+  const [FaveLoading, setFaveLoading] = useState(true);
   const Mounted = UseMounted();
-  const updateToCart = async (
+  const updateToFave = async (
     change: FirebaseFirestoreTypes.DocumentChange<FirebaseFirestoreTypes.DocumentData>
   ) => {
     const Products = (await getProducts(change.doc.data().id)) as Product[];
     setList((old) => {
-      const cart = getUpdatedCart(old, change, Products);
-      setPrice(getPrice(cart));
-      return cart;
+      const faves = getUpdatedFaves(old, change, Products);
+      return faves;
     });
   };
-  const getCart = async () => {
+  const getFave = async () => {
     if (!user) {
       return;
     }
     try {
-      const cart = await getCombinedCart(user);
-      Mounted && setList(cart);
-      Mounted && setPrice(getPrice(cart));
-      Mounted && setCartLoading(false);
+      const faves = await getFaveProducts(user);
+      Mounted && setList(faves);
+      Mounted && setFaveLoading(false);
       // update the cart
-      subscriber = firestoreCartUpdate(user, updateToCart);
+      subscriber = firestoreFaveUpdate(user, updateToFave);
+      //   subscriber = firestoreFaveUpdate(user, getFaveProducts());
     } catch (error) {
       console.log(error);
       Alert.alert("Somthing went wrong!");
     }
   };
-
   useEffect(() => {
-    getCart();
+    getFave();
     return () => {
       subscriber && subscriber();
     };
   }, []);
-  return { List, setList, Price, CartLoading };
+  return { List, setList, FaveLoading };
 }

@@ -7,16 +7,17 @@ import HomeScreen from "_screens/HomeScreen";
 import CheckoutScreen from "_screens/CheckoutScreen/Index";
 import Button from "_components/Button/Index";
 import { baseStyles } from "_styles/Index";
+import ProfileScreen from "../../screens/ProfileScreen/Index";
 interface MainStackProps {}
 const Tabs = createBottomTabNavigator();
-const ProfileScreen = () => {
-  return (
-    <View style={baseStyles.containerJustify}>
-      <Text style={baseStyles.headerLg}>hii this is the profile screen</Text>
-      <Button title="SIGN OUT" onPress={FirebaseUtil.signOut} />
-    </View>
-  );
-};
+// const ProfileScreen = () => {
+//   return (
+//     <View style={baseStyles.containerJustify}>
+//       <Text style={baseStyles.headerLg}>hii this is the profile screen</Text>
+//       <Button title="SIGN OUT" onPress={FirebaseUtil.signOut} />
+//     </View>
+//   );
+// };
 const TabIcon = ({ route }) => ({
   tabBarIcon: ({ focused, color, size }) => {
     let iconName = "home-outline";

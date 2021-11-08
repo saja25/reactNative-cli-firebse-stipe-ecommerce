@@ -25,5 +25,9 @@ const Styles = StyleSheet.create({
   qty: {
     marginBottom: 10,
   },
+  delete: {
+    alignSelf: "flex-end",
+    margin: 10,
+  },
 });
 export default Styles;

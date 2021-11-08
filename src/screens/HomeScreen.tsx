@@ -20,7 +20,7 @@ export default function HomeScreen() {
     return <LoadingScreen />;
   } else
     return (
-      <View>
+      <View style={{ marginBottom: 50 }}>
         <Grid products={fetchProducts} />
       </View>
     );

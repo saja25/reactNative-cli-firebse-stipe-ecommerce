@@ -1,6 +1,6 @@
 import { useStripe } from "@stripe/stripe-react-native";
-import React, { useContext, useState } from "react";
-import { View, Text, Alert } from "react-native";
+import { useContext, useState } from "react";
+import { Alert } from "react-native";
 import { Cart } from "src/interface";
 import { CHECKOUT_GET_PAYMENT_INTENT, Post } from "_utils/BackendUtil";
 import { LoginContext } from "_utils/LoginProvider";

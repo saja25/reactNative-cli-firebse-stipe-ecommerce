@@ -2,7 +2,8 @@ import { StyleSheet, Dimensions } from "react-native";
 
 const Styles = StyleSheet.create({
   flatList: {
-    padding: 10,
+    // padding: 10,
+    // marginBottom: 800,
   },
   continer: {
     flex: 1,
